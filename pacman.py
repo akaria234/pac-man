@@ -55,7 +55,9 @@ def createBoard(board_x, board_y, initPos_x, initPos_y, walls):
     
     for wall in walls:
         wall_x, wall_y = wall.split(" ")
-        board[board_y - int(wall_y) - 1][int(wall_x)] = Type.WALL
+        wall_x, wall_y = int(wall_x), int(wall_y)
+        if wall_x < board_x and wall_y < board_y:
+            board[board_y - wall_y - 1][wall_x] = Type.WALL
     
     return board
 
